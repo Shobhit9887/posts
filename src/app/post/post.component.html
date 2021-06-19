@@ -1,0 +1,39 @@
+<div class="container my-3">
+  <form #f="ngForm">
+    <label class="fs-4 my-2 fw-bold"> Add more post: </label>
+    <div class="row g-2 mb-2">
+      <div class="col-md-6 col-xs-12 fw-bold">
+        <label for="title">Title</label>
+        <input ngModel name="title" #title minlength="5" type="text" class="form-control"
+          placeholder="Title of new post" required>
+      </div>
+      <div class="col-md-6 col-xs-12 fw-bold">
+        <label for="body">Body</label>
+        <input ngModel name="body" id="body" #body type="text" class="form-control" placeholder="Body of new Post"
+          required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-sm col-2 col-md-1"
+      (click)="createPost(title.value, body.value) ">Add
+    </button>
+  </form>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of Posts">
+        <th scope="row">{{p.id}}</th>
+        <td>{{p.title}}</td>
+        <td>{{p.body}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
